@@ -6,8 +6,6 @@ public class SyncronizedCopier extends Copier{
     }
     @Override
     synchronized public void run() {
-        while (stringIterator.hasNext()) {
-            copied += stringIterator.next() + " ";
-        }
+        super.run();
     }
 }
