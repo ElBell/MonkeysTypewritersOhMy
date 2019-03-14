@@ -36,6 +36,12 @@ public class MonkeyTypewriter {
             Thread thread = new Thread(safe);
             thread.start();
         }
+
+        Copier syncronized = new SyncronizedCopier(introduction);
+        for (int i = 0; i < 5; i++) {
+            Thread thread = new Thread(syncronized);
+            thread.start();
+        }
         //monkeys.parallelStream().forEach(Copier::run);
         // This wait is here because main is still a thread and we want the main method to print the finished copies
         // after enough time has passed.
@@ -46,6 +52,7 @@ public class MonkeyTypewriter {
         }
         System.out.println(unsafe.copied);
         System.out.println(safe.copied);
+        System.out.println(syncronized.copied);
         // Print out the copied versions here.
     }
 }
